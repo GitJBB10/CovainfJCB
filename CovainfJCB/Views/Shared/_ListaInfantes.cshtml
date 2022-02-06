@@ -1,0 +1,51 @@
+﻿@model IEnumerable<CovainfJCB.Models.Infante>
+
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    @*<table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NombresInfante)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ApellidosInfante)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FechNacimiento)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdRepresentante)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NombresInfante)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ApellidosInfante)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FechNacimiento)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IdRepresentante)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.IdInfante">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.IdInfante">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.IdInfante">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>*@
+
+
+    

@@ -1,0 +1,209 @@
+﻿@*@model IEnumerable<CovainfJCB.Models.Representante>*@
+@model CovainfJCB.Views.ViewModels.ModeloIndex;
+
+
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Datos del Representante</h3>
+<hr />
+<br />
+
+@{
+    String Representante = "0000000000";
+
+    if (Model.Representante != null)
+    {
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Representante.Nombres)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Representante.Nombres)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Representante.Apellidos)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Representante.Apellidos)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Representante.Correo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Representante.Correo)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Representante.Celular)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Representante.Celular)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Representante.Direccion)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Representante.Direccion)
+            </dd>
+        </dl>
+        Representante = Model.Representante.Id;
+    }
+    else
+    {
+
+        <a class="btn btn-success" asp-action="Create" asp-controller="Representantes">Registrar Información</a>
+        <br />
+
+    }
+}
+
+
+
+<br />
+
+<h3>Infantes Registrados</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Identificación
+            </th>
+            <th>
+                Nombres
+            </th>
+            <th>
+                Apellidos
+            </th>
+            <th>
+                Fecha Nacimiento
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @{
+
+            if (Model.ListInfante.Count() > 0)
+            {
+                int encontrado = 0;
+                foreach (var item in Model.ListInfante)
+                {
+                    if (item.IdRepresentante == Representante)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IdInfante)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NombresInfante)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ApellidosInfante)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FechNacimiento)
+                            </td>
+                        </tr>
+                        encontrado = encontrado + 1;
+                    }
+                    if (encontrado < 1)
+                    {
+                        <p> No tiene Infantes registrados </p>
+                    }
+                }
+            }
+
+        }
+
+    </tbody>
+
+</table>
+
+<a class="btn btn-success" asp-action="Create" asp-controller="Infantes">Agregar Infante</a>
+
+@*<table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombres)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Apellidos)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaNacimiento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Correo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Celular)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Direccion)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @{
+
+                int encontrado = 0;
+
+                foreach (var item in Model)
+                {
+                    if (item.Correo == @User.Identity.Name)
+                    {
+
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nombres)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Apellidos)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FechaNacimiento)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Id)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Celular)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Direccion)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                            </td>
+                        </tr>
+
+                        encontrado = 1;
+
+                        break;
+                    }
+                    if (encontrado == 1)
+                    {
+                        // mensaje si no lo encuentra
+                    }
+
+                }
+
+
+
+            }
+
+
+        </tbody>
+
+    </table>*@
+
+
+
